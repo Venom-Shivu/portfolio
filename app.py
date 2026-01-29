@@ -5,51 +5,51 @@ import os
 # PAGE CONFIG
 # --------------------------------------------------
 st.set_page_config(
-    page_title="Shivansh Yadav | Data & Analytics Portfolio",
+    page_title="Shivansh Yadav | Data Portfolio",
     page_icon="📊",
     layout="wide"
 )
 
 # --------------------------------------------------
-# DARK-THEME SAFE STYLING
+# STYLING (DARK SAFE)
 # --------------------------------------------------
 st.markdown("""
 <style>
-/* Section container */
-.section-box {
-    border: 1px solid #2c2f36;
-    border-radius: 14px;
-    padding: 28px;
-    margin-bottom: 40px;
+/* NAV BAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #0d1117;
+    padding: 12px;
+    border-bottom: 1px solid #30363d;
+}
+
+/* SECTION */
+.section {
+    border: 1px solid #30363d;
+    border-radius: 16px;
+    padding: 30px;
+    margin: 50px 0;
     background-color: #0e1117;
 }
 
-/* Card container */
+/* CARD */
 .card {
-    border: 1px solid #2c2f36;
+    border: 1px solid #30363d;
     border-radius: 14px;
     padding: 22px;
-    margin-bottom: 25px;
+    margin-top: 20px;
     background-color: #161b22;
     color: #e6edf3;
 }
 
-/* Headings */
-.card h3, .card strong {
-    color: #f0f6fc;
-}
-
-/* Text */
-.section-box p, .card p, .card li {
+/* TEXT */
+.section p, .card p, .card li {
     color: #c9d1d9;
 }
 
-/* Center alignment */
-.center {
-    text-align: center;
-}
-
-/* Buttons */
+/* BUTTONS */
 .icon-btn a {
     text-decoration: none;
     font-weight: 600;
@@ -69,195 +69,131 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --------------------------------------------------
-# SESSION STATE (NAVIGATION)
+# NAVIGATION BAR (VISUAL)
 # --------------------------------------------------
-if "section" not in st.session_state:
-    st.session_state.section = "About"
-
-# --------------------------------------------------
-# TOP NAVIGATION
-# --------------------------------------------------
-n1, n2, n3 = st.columns(3)
-
-with n1:
-    if st.button("👤 About"):
-        st.session_state.section = "About"
-
-with n2:
-    if st.button("📊 Projects"):
-        st.session_state.section = "Projects"
-
-with n3:
-    if st.button("📬 Contact"):
-        st.session_state.section = "Contact"
-
-st.divider()
+st.markdown("""
+<div class="navbar center">
+    <div class="icon-btn">
+        <a href="#about">👤 About</a>
+        <a href="#projects">📊 Projects</a>
+        <a href="#contact">📬 Contact</a>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # --------------------------------------------------
-# HEADER (PROFILE)
+# HEADER
 # --------------------------------------------------
 h1, h2 = st.columns([1, 4])
 
 with h1:
     if os.path.exists("images/profile.jpeg"):
         st.image("images/profile.jpeg", width=150)
-    else:
-        st.warning("Profile image not found")
 
 with h2:
     st.title("Shivansh Yadav")
     st.subheader("Data Scientist | Machine Learning | Data Analytics & Visualization")
-    st.write("""
-    I design **data-driven solutions** that convert raw data into reliable insights
-    and scalable systems, prioritizing clarity, performance, and long-term durability.
-    """)
-
-st.divider()
+    st.write(
+        "I design data-driven solutions that convert raw data into reliable insights "
+        "and scalable systems, prioritizing clarity, performance, and durability."
+    )
 
 # ==================================================
-# ABOUT SECTION
+# ABOUT
 # ==================================================
-if st.session_state.section == "About":
+st.markdown('<a id="about"></a>', unsafe_allow_html=True)
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.header("👋 About Me")
 
-    st.markdown('<div class="section-box">', unsafe_allow_html=True)
-    st.header("👋 About Me")
+st.write("""
+I work across the full data lifecycle — from high-performance SQL extraction
+and Python-based analysis to dashboarding and machine learning development.
 
-    st.write("""
-    I work across the **full data lifecycle** — from high-performance SQL extraction
-    and Python-based data analysis to dashboarding and machine learning model development.
+I value correctness and sustainability over flashy or over-engineered solutions.
+""")
 
-    I value **correctness and sustainability** over flashy or over-engineered solutions.
-    """)
+st.subheader("🏆 HackerRank Achievements")
+st.markdown("""
+- ⭐⭐⭐⭐⭐ Python (Gold)  
+- ⭐⭐⭐⭐⭐ SQL (Gold)  
+- ⭐⭐⭐⭐⭐ Problem Solving (Gold)  
+- SQL Basic, Intermediate & Advanced Certified  
+- Python Basic Certified
+""")
 
-    st.subheader("🧠 Technical Expertise")
+st.markdown("""
+<div class="icon-btn">
+<a href="https://www.hackerrank.com/profile/Venom001" target="_blank">🏆 HackerRank</a>
+</div>
+""", unsafe_allow_html=True)
 
-    st.markdown("""
-    **Programming & Data Engineering**
-    - Python (Pandas, NumPy)
-    - SQL (Advanced Analytics & Optimization)
-    - Data Structures & Algorithms
-
-    **Machine Learning & AI**
-    - Scikit-learn, TensorFlow, PyTorch
-    - Classical ML & Deep Learning
-    - Generative AI & Prompt Engineering
-
-    **Analytics & Visualization**
-    - Power BI, Tableau
-    - DAX & KPI Design
-    - Excel & Jupyter
-    """)
-
-    st.subheader("🏆 HackerRank Achievements")
-
-    st.markdown("""
-    **⭐ 5-Star Gold Badges**
-    - Python  
-    - SQL  
-    - Problem Solving  
-
-    **📜 Certifications**
-    - SQL (Basic, Intermediate, Advanced)  
-    - Python (Basic)
-    """)
-
-    st.markdown("""
-    <div class="icon-btn">
-        <a href="https://www.hackerrank.com/profile/Venom001" target="_blank">🏆 HackerRank Profile</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.subheader("🎯 Current Focus")
-    st.markdown("""
-    - Advanced SQL performance tuning  
-    - End-to-end ML projects with real datasets  
-    - Business-driven analytics & storytelling  
-    """)
-
-    st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)
 
 # ==================================================
-# PROJECTS SECTION
+# PROJECTS
 # ==================================================
-elif st.session_state.section == "Projects":
+st.markdown('<a id="projects"></a>', unsafe_allow_html=True)
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.header("📊 Featured Projects")
 
-    st.markdown('<div class="section-box">', unsafe_allow_html=True)
-    st.header("📊 Featured Projects")
+st.markdown('<div class="card">', unsafe_allow_html=True)
+st.subheader("Nexus Analytics — E-Commerce Performance Dashboard")
+st.write("""
+KPI-driven analytics project evaluating e-commerce sales, customer behavior,
+and operational performance with executive dashboard planning.
+""")
 
-    # Nexus Analytics
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.subheader("Nexus Analytics — E-Commerce Performance Dashboard")
+if os.path.exists("images/nexus_dashboard_mockup.png"):
+    st.image(
+        "images/nexus_dashboard_mockup.png",
+        caption="Proposed Dashboard Blueprint",
+        use_container_width=True
+    )
 
-    st.write("""
-    KPI-driven analytics project focused on evaluating e-commerce sales,
-    customer behavior, and operational performance with executive-style
-    dashboard planning.
-    """)
+st.markdown("""
+<div class="icon-btn">
+<a href="https://github.com/Venom-Shivu/portfolio" target="_blank">💻 View Repository</a>
+</div>
+""", unsafe_allow_html=True)
 
-    if os.path.exists("images/nexus_dashboard_mockup.png"):
-        st.image(
-            "images/nexus_dashboard_mockup.png",
-            caption="Proposed KPI & Dashboard Layout (Concept Design)",
-            use_container_width=True
-        )
+st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="icon-btn">
-        <a href="https://github.com/Venom-Shivu/portfolio" target="_blank">💻 View Repository</a>
-    </div>
-    """, unsafe_allow_html=True)
+# Other repos
+repos = [
+    ("🎮 Python Console Games", "https://github.com/Venom-Shivu/python-console-games"),
+    ("📈 VenomSQL – Executive Analytics", "https://github.com/Venom-Shivu/VenomSQL-Executive-Analytics-Dashboard"),
+    ("🐍 Python Journey", "https://github.com/Venom-Shivu/My-Python-Journey"),
+    ("🗄️ SQL Journey", "https://github.com/Venom-Shivu/MySQL-JOURNEY"),
+]
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    st.subheader("📁 Other Notable Repositories")
-
-    repos = [
-        ("🎮 Python Console Games", "https://github.com/Venom-Shivu/python-console-games"),
-        ("📈 VenomSQL – Executive Analytics", "https://github.com/Venom-Shivu/VenomSQL-Executive-Analytics-Dashboard"),
-        ("🐍 Python Journey", "https://github.com/Venom-Shivu/My-Python-Journey"),
-        ("🗄️ SQL Journey", "https://github.com/Venom-Shivu/MySQL-JOURNEY"),
-        ("📚 Python Practice Workbook", "https://github.com/Venom-Shivu/Comprehensive-Python-Practice-Workbook-Venom"),
-    ]
-
-    for name, link in repos:
-        st.markdown(f"""
-        <div class="card">
-            <strong>{name}</strong><br><br>
-            <div class="icon-btn">
-                <a href="{link}" target="_blank">🔗 View Repository</a>
-            </div>
+for name, link in repos:
+    st.markdown(f"""
+    <div class="card">
+        <strong>{name}</strong><br><br>
+        <div class="icon-btn">
+            <a href="{link}" target="_blank">🔗 View Repository</a>
         </div>
-        """, unsafe_allow_html=True)
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# ==================================================
-# CONTACT SECTION
-# ==================================================
-elif st.session_state.section == "Contact":
-
-    st.markdown('<div class="section-box center">', unsafe_allow_html=True)
-    st.header("📬 Connect With Me")
-
-    st.markdown("""
-    <div class="icon-btn">
-        <a href="https://www.linkedin.com/in/the-venom/" target="_blank">🔗 LinkedIn</a>
-        <a href="https://github.com/Venom-Shivu" target="_blank">🐙 GitHub</a>
-        <a href="https://www.hackerrank.com/profile/Venom001" target="_blank">🏆 HackerRank</a>
-        <a href="https://drive.google.com/file/d/1WDtScZmczuYFGEnJv2BkCMnsw2bXPRBA/view?usp=sharing" target="_blank">📄 Resume</a>
-        <a href="mailto:mrshivusinghyadav@gmail.com">📧 Email</a>
     </div>
     """, unsafe_allow_html=True)
 
-    st.write("""
-    Open to **Data Science, Analytics, and Machine Learning roles**,
-    internships, and meaningful collaborations.
-    """)
+st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
+# ==================================================
+# CONTACT
+# ==================================================
+st.markdown('<a id="contact"></a>', unsafe_allow_html=True)
+st.markdown('<div class="section">', unsafe_allow_html=True)
+st.header("📬 Contact")
 
-# --------------------------------------------------
-# FOOTER
-# --------------------------------------------------
-st.divider()
-st.caption("© 2026 Shivansh Yadav | Built with Python & Streamlit")
+st.markdown("""
+<div class="icon-btn">
+<a href="https://www.linkedin.com/in/the-venom/" target="_blank">LinkedIn</a>
+<a href="https://github.com/Venom-Shivu" target="_blank">GitHub</a>
+<a href="https://drive.google.com/file/d/1WDtScZmczuYFGEnJv2BkCMnsw2bXPRBA/view" target="_blank">Resume</a>
+<a href="mailto:mrshivusinghyadav@gmail.com">Email</a>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("</div>", unsafe_allow_html=True)
+
+st.caption("© 2026 Shivansh Yadav | Built with Streamlit")
