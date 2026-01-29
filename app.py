@@ -37,15 +37,35 @@ with nav3:
 st.divider()
 
 # --------------------------------------------------
-# HEADER
+# HEADER WITH PROFILE IMAGE + RESUME BUTTON
 # --------------------------------------------------
-st.title("Shivansh Yadav")
-st.subheader("Data Scientist | Machine Learning | Data Analytics & Visualization")
+col1, col2, col3 = st.columns([1, 3, 1])
 
-st.write("""
-I design **data-driven solutions** that convert raw data into reliable insights
-and scalable systems, focusing on clarity, performance, and business relevance.
-""")
+with col1:
+    if os.path.exists("images/profile.jpeg"):
+        st.image("images/profile.jpeg", width=160)
+    else:
+        st.warning("Profile image not found")
+
+with col2:
+    st.title("Shivansh Yadav")
+    st.subheader("Data Scientist | Machine Learning | Data Analytics & Visualization")
+    st.write("""
+    I design **data-driven solutions** that convert raw data into reliable insights
+    and scalable systems, prioritizing clarity, performance, and durability.
+    """)
+
+with col3:
+    if os.path.exists("resume/Shivansh_Yadav_Resume.pdf"):
+        with open("resume/Shivansh_Yadav_Resume.pdf", "rb") as file:
+            st.download_button(
+                label="📄 Download Resume",
+                data=file,
+                file_name="Shivansh_Yadav_Resume.pdf",
+                mime="application/pdf"
+            )
+    else:
+        st.warning("Resume not found")
 
 st.divider()
 
@@ -57,19 +77,19 @@ if st.session_state.section == "About":
     st.header("👋 About Me")
 
     st.write("""
-    I work across the **full data lifecycle** — from extracting and optimizing data,
-    to building analytical systems, dashboards, and machine learning models.
+    I work across the **full data lifecycle** — from high-performance SQL extraction
+    and Python-based analysis to dashboarding and machine learning model development.
 
-    My approach prioritizes **durability and correctness** over flashy or
-    over-engineered solutions.
+    I value **correctness, efficiency, and long-term maintainability** over flashy
+    or over-engineered solutions.
     """)
 
-    st.subheader("🧠 Core Capabilities")
+    st.subheader("🧠 Technical Stack")
 
     st.markdown("""
     **Programming & Data Engineering**
     - Python (Pandas, NumPy)
-    - SQL (Joins, CTEs, Performance Optimization)
+    - SQL (Advanced Analytics, Optimization)
     - Data Structures & Algorithms
 
     **Machine Learning & AI**
@@ -80,7 +100,23 @@ if st.session_state.section == "About":
     **Analytics & Visualization**
     - Power BI, Tableau
     - DAX & KPI Design
-    - Excel & Jupyter Notebooks
+    - Excel, Jupyter
+    """)
+
+    st.subheader("🏆 HackerRank Achievements")
+
+    st.markdown("""
+    **HackerRank Profile:**  
+    🔗 https://www.hackerrank.com/profile/Venom001  
+
+    **Badges**
+    - ⭐⭐⭐⭐⭐ **Python – Gold Badge**
+    - ⭐⭐⭐⭐⭐ **SQL – Gold Badge**
+    - ⭐⭐⭐⭐⭐ **Problem Solving – Gold Badge**
+
+    **Certifications**
+    - SQL (Basic, Intermediate, Advanced) – *All challenges completed*
+    - Python (Basic)
     """)
 
     st.subheader("🎯 Current Focus")
@@ -97,21 +133,18 @@ elif st.session_state.section == "Projects":
 
     st.header("📊 Featured Projects")
 
-    # -------------------------------
-    # Nexus Analytics
-    # -------------------------------
     st.subheader("Nexus Analytics — E-Commerce Performance Dashboard")
 
     st.write("""
-    A professional analytics project focused on evaluating e-commerce sales,
-    customer behavior, and operational performance through KPI-driven analysis
-    and executive dashboard design.
+    A professional analytics project evaluating e-commerce performance across
+    revenue, customers, regions, and operations using KPI-driven analysis and
+    executive dashboard design.
     """)
 
     st.markdown("""
-    **Focus Areas**
+    **Core Areas**
     - Sales & revenue analysis
-    - KPI planning and metric design
+    - KPI planning & metric design
     - Dashboard blueprinting
     - Business insight generation
     """)
@@ -122,38 +155,28 @@ elif st.session_state.section == "Projects":
             caption="Proposed KPI & Dashboard Layout (Concept Design)",
             use_container_width=True
         )
-    else:
-        st.info("Dashboard mockup image not available.")
 
-    st.markdown("[🔗 View Repository](https://github.com/Venom-Shivu/portfolio)")
+    st.markdown("🔗 https://github.com/Venom-Shivu/portfolio")
 
     st.divider()
 
-    # -------------------------------
-    # Other GitHub Projects
-    # -------------------------------
     st.subheader("📁 Other Notable Repositories")
 
     st.markdown("""
     **🎮 Python Console Games**  
-    Logic-building and OOP-focused Python games  
-    🔗 https://github.com/Venom-Shivu/python-console-games
+    https://github.com/Venom-Shivu/python-console-games  
 
     **📈 VenomSQL – Executive Analytics Dashboard**  
-    Advanced SQL analytics, KPI design, Power BI dashboards  
-    🔗 https://github.com/Venom-Shivu/VenomSQL-Executive-Analytics-Dashboard
+    https://github.com/Venom-Shivu/VenomSQL-Executive-Analytics-Dashboard  
 
     **🐍 Python Journey**  
-    Python fundamentals, DSA, and problem-solving  
-    🔗 https://github.com/Venom-Shivu/My-Python-Journey
+    https://github.com/Venom-Shivu/My-Python-Journey  
 
     **🗄️ SQL Journey**  
-    SQL analytics, query optimization, and practice  
-    🔗 https://github.com/Venom-Shivu/MySQL-JOURNEY
+    https://github.com/Venom-Shivu/MySQL-JOURNEY  
 
     **📚 Python Practice Workbook**  
-    Interview prep, statistics, and data science exercises  
-    🔗 https://github.com/Venom-Shivu/Comprehensive-Python-Practice-Workbook-Venom
+    https://github.com/Venom-Shivu/Comprehensive-Python-Practice-Workbook-Venom  
     """)
 
 # ==================================================
@@ -166,12 +189,13 @@ elif st.session_state.section == "Contact":
     st.markdown("""
     - **LinkedIn:** https://www.linkedin.com/in/the-venom/  
     - **GitHub:** https://github.com/Venom-Shivu  
+    - **HackerRank:** https://www.hackerrank.com/profile/Venom001  
     - **Email:** mrshivusinghyadav@gmail.com  
     """)
 
     st.write("""
-    Open to data science, analytics, and machine learning opportunities,
-    internships, and collaborative projects.
+    Open to **Data Science, Analytics, and Machine Learning roles**,
+    internships, and high-impact collaborations.
     """)
 
 # --------------------------------------------------
