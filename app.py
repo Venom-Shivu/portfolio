@@ -11,43 +11,59 @@ st.set_page_config(
 )
 
 # --------------------------------------------------
-# BASIC STYLING (CLEAN + PROFESSIONAL)
+# DARK-THEME SAFE STYLING
 # --------------------------------------------------
 st.markdown("""
 <style>
+/* Section container */
 .section-box {
-    border: 1px solid #e6e6e6;
+    border: 1px solid #2c2f36;
     border-radius: 14px;
     padding: 28px;
-    margin-bottom: 35px;
-    background-color: #fafafa;
+    margin-bottom: 40px;
+    background-color: #0e1117;
 }
 
+/* Card container */
 .card {
-    border: 1px solid #e6e6e6;
+    border: 1px solid #2c2f36;
     border-radius: 14px;
     padding: 22px;
     margin-bottom: 25px;
-    background-color: white;
+    background-color: #161b22;
+    color: #e6edf3;
 }
 
+/* Headings */
+.card h3, .card strong {
+    color: #f0f6fc;
+}
+
+/* Text */
+.section-box p, .card p, .card li {
+    color: #c9d1d9;
+}
+
+/* Center alignment */
 .center {
     text-align: center;
 }
 
+/* Buttons */
 .icon-btn a {
     text-decoration: none;
     font-weight: 600;
     padding: 10px 18px;
     border-radius: 10px;
-    border: 1px solid #d0d0d0;
+    border: 1px solid #30363d;
     margin: 6px;
     display: inline-block;
-    color: black;
+    color: #f0f6fc;
+    background-color: #0d1117;
 }
 
 .icon-btn a:hover {
-    background-color: #f0f2f6;
+    background-color: #21262d;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -78,17 +94,17 @@ with n3:
 st.divider()
 
 # --------------------------------------------------
-# HEADER (PROFILE IMAGE + INTRO)
+# HEADER (PROFILE)
 # --------------------------------------------------
-c1, c2 = st.columns([1, 4])
+h1, h2 = st.columns([1, 4])
 
-with c1:
+with h1:
     if os.path.exists("images/profile.jpeg"):
         st.image("images/profile.jpeg", width=150)
     else:
         st.warning("Profile image not found")
 
-with c2:
+with h2:
     st.title("Shivansh Yadav")
     st.subheader("Data Scientist | Machine Learning | Data Analytics & Visualization")
     st.write("""
@@ -136,18 +152,18 @@ if st.session_state.section == "About":
 
     st.markdown("""
     **⭐ 5-Star Gold Badges**
-    - Python
-    - SQL
-    - Problem Solving
+    - Python  
+    - SQL  
+    - Problem Solving  
 
     **📜 Certifications**
-    - SQL (Basic, Intermediate, Advanced)
+    - SQL (Basic, Intermediate, Advanced)  
     - Python (Basic)
     """)
 
     st.markdown("""
     <div class="icon-btn">
-        <a href="https://www.hackerrank.com/profile/Venom001" target="_blank">🏆 View HackerRank Profile</a>
+        <a href="https://www.hackerrank.com/profile/Venom001" target="_blank">🏆 HackerRank Profile</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -168,6 +184,7 @@ elif st.session_state.section == "Projects":
     st.markdown('<div class="section-box">', unsafe_allow_html=True)
     st.header("📊 Featured Projects")
 
+    # Nexus Analytics
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.subheader("Nexus Analytics — E-Commerce Performance Dashboard")
 
@@ -186,7 +203,7 @@ elif st.session_state.section == "Projects":
 
     st.markdown("""
     <div class="icon-btn">
-        <a href="https://github.com/Venom-Shivu/portfolio" target="_blank">💻 GitHub Repository</a>
+        <a href="https://github.com/Venom-Shivu/portfolio" target="_blank">💻 View Repository</a>
     </div>
     """, unsafe_allow_html=True)
 
