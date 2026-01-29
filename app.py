@@ -11,31 +11,46 @@ st.set_page_config(
 )
 
 # --------------------------------------------------
-# MINIMAL ANALYTICAL THEME
+# HARD OVERRIDE STREAMLIT LAYOUT (NO SEPARATORS)
 # --------------------------------------------------
 st.markdown("""
 <style>
-hr { display: none; }
 
-/* Background */
-.stApp {
-    background: linear-gradient(180deg, #0b0f14 0%, #0e1117 40%, #0b0f14 100%);
+/* REMOVE ALL DEFAULT STREAMLIT SPACING & SEPARATORS */
+.block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 0 !important;
 }
 
-/* Navbar */
+.element-container {
+    margin-bottom: 0 !important;
+}
+
+hr {
+    display: none !important;
+}
+
+/* FULL CONTINUOUS BACKGROUND – ANALYTICAL THEME */
+.stApp {
+    background:
+        radial-gradient(circle at 20% 10%, #111827 0%, #0b0f14 45%, #0a0d12 100%);
+}
+
+/* NAVBAR */
 .navbar {
     position: sticky;
     top: 0;
     z-index: 999;
-    background-color: rgba(13,17,23,0.95);
-    backdrop-filter: blur(8px);
+    background: rgba(11, 15, 20, 0.92);
+    backdrop-filter: blur(10px);
     padding: 12px 0;
 }
 
+/* NAV ITEMS */
 .nav-items {
     display: flex;
     justify-content: center;
-    gap: 36px;
+    gap: 42px;
 }
 
 .nav-items a {
@@ -47,56 +62,49 @@ hr { display: none; }
 }
 
 .nav-items a:hover {
-    background-color: #1f2937;
+    background-color: rgba(255,255,255,0.06);
 }
 
-/* Sections */
-.section {
-    padding: 60px 0;
+/* TYPOGRAPHY */
+h1, h2, h3 {
+    color: #f9fafb;
+    letter-spacing: 0.3px;
 }
 
-.section.alt {
-    background-color: rgba(255,255,255,0.025);
-}
-
-.section-inner {
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Cards */
-.card {
-    background-color: #111827;
-    border-radius: 12px;
-    padding: 26px;
-    margin-top: 28px;
-}
-
-/* Text */
 p, li {
     color: #9ca3af;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
-/* Buttons */
+/* SOFT CONTENT CARDS (NO VISUAL SEPARATION) */
+.card {
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 22px;
+}
+
+/* BUTTONS */
 .icon-btn a {
     display: inline-block;
+    margin-top: 8px;
     margin-right: 10px;
-    margin-top: 6px;
     padding: 8px 16px;
     border-radius: 8px;
-    border: 1px solid #1f2937;
+    border: 1px solid rgba(255,255,255,0.12);
     color: #e5e7eb;
     text-decoration: none;
     font-weight: 600;
-    background-color: #0d1117;
+    background: rgba(0,0,0,0.2);
 }
 
 .icon-btn a:hover {
-    background-color: #1f2937;
+    background: rgba(255,255,255,0.08);
 }
 
-img { border-radius: 14px; }
+img {
+    border-radius: 14px;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -126,8 +134,8 @@ with c2:
     st.title("Shivansh Yadav")
     st.subheader("Data Scientist | Machine Learning | Data Analytics & Visualization")
     st.write(
-        "I build data-driven systems that transform raw data into trusted insights "
-        "and decision-ready intelligence, with strong focus on analytical depth, "
+        "I build data-driven systems that turn raw data into trusted insights and "
+        "decision-ready intelligence, with a strong focus on analytical depth, "
         "business relevance, and long-term maintainability."
     )
 
@@ -135,58 +143,28 @@ with c2:
 # ABOUT
 # ==================================================
 st.markdown('<a id="about"></a>', unsafe_allow_html=True)
-st.markdown('<div class="section">', unsafe_allow_html=True)
-st.markdown('<div class="section-inner">', unsafe_allow_html=True)
-
 st.header("About Me")
 
 st.write("""
-I am a **data professional with strong mastery across Data Analytics, Business Intelligence,
-and Applied Machine Learning**. I work end-to-end — from raw data extraction to executive
-insight delivery and model-driven decision support.
+I am a **data professional with deep hands-on expertise across Data Analytics,
+Business Intelligence, and Applied Machine Learning**.
 
-My strength lies in combining **technical depth with business understanding**.
-I don’t just analyze data — I design systems that help stakeholders make
-better, faster, and more confident decisions.
+My work spans the full analytics lifecycle — from raw data extraction and
+transformation to KPI modeling, dashboarding, and predictive analysis.
 """)
 
-st.subheader("🧠 Core Skills & Tooling")
-
 st.markdown("""
-**🐍 Python (Advanced)**
-- Pandas, NumPy for data analysis  
-- Automation & analytical pipelines  
-- Scikit-learn for ML modeling  
-
-**🗄️ SQL (Advanced Analytics)**
-- Complex joins, CTEs, window functions  
-- KPI computation & validation  
-- Query optimization and performance tuning  
-
-**📊 Excel (Analytics & Reporting)**
-- Pivot tables & analytical models  
-- Business reporting & validation  
-- Ad-hoc analysis for stakeholders  
-
-**📈 Power BI**
-- KPI design & metric frameworks  
-- DAX measures & calculated tables  
-- Executive dashboards & storytelling  
-
-**🤖 Machine Learning**
-- Supervised & unsupervised models  
-- Feature engineering & evaluation  
-- Practical ML for business use cases  
-
-**📉 Data & Business Analysis**
-- Requirements gathering & KPI definition  
-- Translating business questions into metrics  
-- Insight communication & data storytelling  
+**Core Strengths**
+- 🐍 **Python** – data analysis, automation, ML pipelines  
+- 🗄️ **SQL** – advanced analytics, performance tuning, KPI computation  
+- 📊 **Excel** – analytical modeling, validation, business reporting  
+- 📈 **Power BI** – DAX, data modeling, executive dashboards  
+- 🤖 **Machine Learning** – supervised & unsupervised models  
+- 📉 **Business & Data Analysis** – KPI design, storytelling, decision support  
 """)
 
-st.subheader("🏆 Coding & Problem-Solving Credentials")
-
 st.markdown("""
+**Credentials**
 - ⭐⭐⭐⭐⭐ Python – HackerRank (Gold)  
 - ⭐⭐⭐⭐⭐ SQL – HackerRank (Gold)  
 - ⭐⭐⭐⭐⭐ Problem Solving – HackerRank (Gold)  
@@ -200,30 +178,17 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("</div></div>", unsafe_allow_html=True)
-
 # ==================================================
 # PROJECTS
 # ==================================================
 st.markdown('<a id="projects"></a>', unsafe_allow_html=True)
-st.markdown('<div class="section alt">', unsafe_allow_html=True)
-st.markdown('<div class="section-inner">', unsafe_allow_html=True)
-
 st.header("Projects")
 
-# --- VenomSQL ---
 st.markdown('<div class="card">', unsafe_allow_html=True)
 st.subheader("VenomSQL — Executive Analytics Dashboard")
-
 st.write("""
-A **SQL-first executive analytics project** focused on business KPIs, performance tracking,
-and decision-ready reporting.
-
-**Highlights**
-- Advanced SQL analytics & KPI design  
-- Executive-level reporting mindset  
-- Clean, optimized analytical queries  
-- Business-oriented insight delivery  
+A SQL-first executive analytics project focused on business KPIs,
+performance tracking, and decision-ready reporting.
 """)
 
 st.markdown("""
@@ -235,13 +200,11 @@ View Repository
 """, unsafe_allow_html=True)
 st.markdown("</div>", unsafe_allow_html=True)
 
-# --- Nexus Analytics ---
 st.markdown('<div class="card">', unsafe_allow_html=True)
 st.subheader("Nexus Analytics — E-Commerce Performance Dashboard")
-
 st.write("""
-End-to-end analytics project analyzing e-commerce sales, customers, regions,
-and operations with KPI-driven dashboard planning.
+End-to-end analytics project analyzing e-commerce sales, customers,
+regions, and operational KPIs.
 """)
 
 if os.path.exists("images/nexus_dashboard_mockup.png"):
@@ -258,26 +221,15 @@ st.markdown("</div>", unsafe_allow_html=True)
 # CONTACT
 # ==================================================
 st.markdown('<a id="contact"></a>', unsafe_allow_html=True)
-st.markdown('<div class="section">', unsafe_allow_html=True)
-st.markdown('<div class="section-inner">', unsafe_allow_html=True)
-
 st.header("Contact & Opportunities")
 
 st.write("""
 I am actively open to **Data Analyst, Business Analyst, Data Scientist,
 and Machine Learning roles**, including internships, full-time positions,
-and high-impact collaborations.
+and serious collaborations.
 
-I’m particularly interested in roles that involve:
-- KPI ownership and business analytics  
-- SQL-heavy analytical work  
-- Dashboarding & BI systems  
-- Data-driven decision support  
-""")
-
-st.write("""
-If you’re looking for someone who understands **both the data and the business side**,
-I’d be happy to connect.
+If you’re looking for someone who understands **both data and business impact**,
+I’d be glad to connect.
 """)
 
 st.markdown("""
@@ -289,6 +241,4 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("</div></div>", unsafe_allow_html=True)
-
-st.caption("© 2026 Shivansh Yadav | Data & Analytics Portfolio")
+st.caption("© 2026 Shivansh Yadav")
