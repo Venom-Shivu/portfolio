@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 # --------------------------------------------------
-# STYLING (DARK SAFE)
+# STYLING (DARK THEME SAFE)
 # --------------------------------------------------
 st.markdown("""
 <style>
@@ -19,18 +19,45 @@ st.markdown("""
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 999;
     background-color: #0d1117;
-    padding: 12px;
+    padding: 12px 0;
     border-bottom: 1px solid #30363d;
+}
+
+/* NAV ITEMS */
+.nav-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-items a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #f0f6fc;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.nav-items a:hover {
+    background-color: #21262d;
+}
+
+/* SEPARATOR */
+.nav-sep {
+    width: 1px;
+    height: 22px;
+    background-color: #30363d;
 }
 
 /* SECTION */
 .section {
     border: 1px solid #30363d;
     border-radius: 16px;
-    padding: 30px;
-    margin: 50px 0;
+    padding: 32px;
+    margin: 60px 0;
     background-color: #0e1117;
 }
 
@@ -39,7 +66,7 @@ st.markdown("""
     border: 1px solid #30363d;
     border-radius: 14px;
     padding: 22px;
-    margin-top: 20px;
+    margin-top: 24px;
     background-color: #161b22;
     color: #e6edf3;
 }
@@ -56,7 +83,7 @@ st.markdown("""
     padding: 10px 18px;
     border-radius: 10px;
     border: 1px solid #30363d;
-    margin: 6px;
+    margin: 6px 6px 0 0;
     display: inline-block;
     color: #f0f6fc;
     background-color: #0d1117;
@@ -69,13 +96,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --------------------------------------------------
-# NAVIGATION BAR (VISUAL)
+# NAVIGATION BAR (REAL, EQUAL, SEPARATED)
 # --------------------------------------------------
 st.markdown("""
-<div class="navbar center">
-    <div class="icon-btn">
+<div class="navbar">
+    <div class="nav-items">
         <a href="#about">👤 About</a>
+        <div class="nav-sep"></div>
         <a href="#projects">📊 Projects</a>
+        <div class="nav-sep"></div>
         <a href="#contact">📬 Contact</a>
     </div>
 </div>
@@ -99,12 +128,12 @@ with h2:
     )
 
 # ==================================================
-# ABOUT
+# ABOUT SECTION
 # ==================================================
 st.markdown('<a id="about"></a>', unsafe_allow_html=True)
 st.markdown('<div class="section">', unsafe_allow_html=True)
-st.header("👋 About Me")
 
+st.header("👋 About Me")
 st.write("""
 I work across the full data lifecycle — from high-performance SQL extraction
 and Python-based analysis to dashboarding and machine learning development.
@@ -130,10 +159,11 @@ st.markdown("""
 st.markdown("</div>", unsafe_allow_html=True)
 
 # ==================================================
-# PROJECTS
+# PROJECTS SECTION
 # ==================================================
 st.markdown('<a id="projects"></a>', unsafe_allow_html=True)
 st.markdown('<div class="section">', unsafe_allow_html=True)
+
 st.header("📊 Featured Projects")
 
 st.markdown('<div class="card">', unsafe_allow_html=True)
@@ -158,7 +188,6 @@ st.markdown("""
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# Other repos
 repos = [
     ("🎮 Python Console Games", "https://github.com/Venom-Shivu/python-console-games"),
     ("📈 VenomSQL – Executive Analytics", "https://github.com/Venom-Shivu/VenomSQL-Executive-Analytics-Dashboard"),
@@ -179,10 +208,11 @@ for name, link in repos:
 st.markdown("</div>", unsafe_allow_html=True)
 
 # ==================================================
-# CONTACT
+# CONTACT SECTION
 # ==================================================
 st.markdown('<a id="contact"></a>', unsafe_allow_html=True)
 st.markdown('<div class="section">', unsafe_allow_html=True)
+
 st.header("📬 Contact")
 
 st.markdown("""
