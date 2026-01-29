@@ -1,211 +1,181 @@
 import streamlit as st
 import pandas as pd
-from pathlib import Path
+import os
 
 # --------------------------------------------------
 # PAGE CONFIG
 # --------------------------------------------------
 st.set_page_config(
-    page_title="Shivansh Yadav | Data Analytics Portfolio",
+    page_title="Shivansh Yadav | Data & Analytics Portfolio",
     page_icon="📊",
     layout="wide"
 )
 
 # --------------------------------------------------
-# GLOBAL PATHS
+# SESSION STATE (NAVIGATION)
 # --------------------------------------------------
-DATA_PATH = Path("data/ecommerce_sales_data.csv")
-DASHBOARD_IMAGE = Path("images/nexus_dashboard_mockup.png")
+if "section" not in st.session_state:
+    st.session_state.section = "About"
 
 # --------------------------------------------------
-# HEADER / INTRODUCTION
+# TOP NAVIGATION
+# --------------------------------------------------
+nav1, nav2, nav3 = st.columns(3)
+
+with nav1:
+    if st.button("👤 About"):
+        st.session_state.section = "About"
+
+with nav2:
+    if st.button("📊 Projects"):
+        st.session_state.section = "Projects"
+
+with nav3:
+    if st.button("📬 Contact"):
+        st.session_state.section = "Contact"
+
+st.divider()
+
+# --------------------------------------------------
+# HEADER
 # --------------------------------------------------
 st.title("Shivansh Yadav")
-st.subheader("Data Analyst | Python | SQL | Excel | Power BI")
+st.subheader("Data Scientist | Machine Learning | Data Analytics & Visualization")
 
-st.write(
-    """
-    I build data analytics and business intelligence solutions that transform
-    raw data into **clear, decision-ready insights**.
-    
-    This portfolio presents my projects with a focus on:
-    - Realistic business problems  
-    - Structured analytical workflows  
-    - KPI-driven dashboards and insights  
-    """
-)
+st.write("""
+I design **data-driven solutions** that convert raw data into reliable insights
+and scalable systems, focusing on clarity, performance, and business relevance.
+""")
 
 st.divider()
 
-# --------------------------------------------------
+# ==================================================
 # ABOUT SECTION
-# --------------------------------------------------
-st.header("👤 About Me")
+# ==================================================
+if st.session_state.section == "About":
 
-st.write(
-    """
-    I am a data analytics enthusiast focused on **sales performance analysis,
-    KPI design, and dashboarding**. My work emphasizes clarity, correctness,
-    and business relevance over visual noise.
+    st.header("👋 About Me")
 
-    I follow an end-to-end analytics approach:
-    **Problem → Data → Analysis → Insight → Recommendation**.
-    """
-)
+    st.write("""
+    I work across the **full data lifecycle** — from extracting and optimizing data,
+    to building analytical systems, dashboards, and machine learning models.
 
-# --------------------------------------------------
+    My approach prioritizes **durability and correctness** over flashy or
+    over-engineered solutions.
+    """)
+
+    st.subheader("🧠 Core Capabilities")
+
+    st.markdown("""
+    **Programming & Data Engineering**
+    - Python (Pandas, NumPy)
+    - SQL (Joins, CTEs, Performance Optimization)
+    - Data Structures & Algorithms
+
+    **Machine Learning & AI**
+    - Scikit-learn, TensorFlow, PyTorch
+    - Classical ML & Deep Learning
+    - Generative AI & Prompt Engineering
+
+    **Analytics & Visualization**
+    - Power BI, Tableau
+    - DAX & KPI Design
+    - Excel & Jupyter Notebooks
+    """)
+
+    st.subheader("🎯 Current Focus")
+    st.markdown("""
+    - Advanced SQL performance tuning  
+    - End-to-end ML projects with real datasets  
+    - Business-driven analytics & storytelling  
+    """)
+
+# ==================================================
 # PROJECTS SECTION
-# --------------------------------------------------
-st.header("📊 Featured Project")
+# ==================================================
+elif st.session_state.section == "Projects":
 
-st.subheader("Nexus Analytics — E-Commerce Performance Dashboard")
+    st.header("📊 Featured Projects")
 
-st.write(
-    """
-    **Nexus Analytics** is a professional-grade analytics project focused on
-    evaluating e-commerce sales performance across products, regions,
-    customer segments, and time.
+    # -------------------------------
+    # Nexus Analytics
+    # -------------------------------
+    st.subheader("Nexus Analytics — E-Commerce Performance Dashboard")
 
-    The project demonstrates:
-    - Analytical problem definition
+    st.write("""
+    A professional analytics project focused on evaluating e-commerce sales,
+    customer behavior, and operational performance through KPI-driven analysis
+    and executive dashboard design.
+    """)
+
+    st.markdown("""
+    **Focus Areas**
+    - Sales & revenue analysis
     - KPI planning and metric design
-    - Dataset-driven analysis
-    - Executive-style dashboard thinking
-    """
-)
+    - Dashboard blueprinting
+    - Business insight generation
+    """)
 
-# --------------------------------------------------
-# PROJECT DOCUMENTATION
-# --------------------------------------------------
-with st.expander("📄 Project Documentation"):
-    st.markdown(
-        """
-        **Problem Statement**  
-        Businesses often lack consolidated visibility into revenue, orders,
-        customer behavior, and operational performance, limiting data-driven
-        decision-making.
+    if os.path.exists("images/nexus_dashboard_mockup.png"):
+        st.image(
+            "images/nexus_dashboard_mockup.png",
+            caption="Proposed KPI & Dashboard Layout (Concept Design)",
+            use_container_width=True
+        )
+    else:
+        st.info("Dashboard mockup image not available.")
 
-        **Proposed Solution**  
-        Design and implement an analytics workflow that converts transactional
-        data into KPIs, trends, and dashboards to support executive decisions.
-        """
-    )
+    st.markdown("[🔗 View Repository](https://github.com/Venom-Shivu/portfolio)")
 
-# --------------------------------------------------
-# DATASET SECTION
-# --------------------------------------------------
-st.subheader("📁 Dataset Overview")
+    st.divider()
 
-if DATA_PATH.exists():
-    df = pd.read_csv(DATA_PATH)
+    # -------------------------------
+    # Other GitHub Projects
+    # -------------------------------
+    st.subheader("📁 Other Notable Repositories")
 
-    st.write(
-        f"""
-        - **Records:** {len(df):,} transactions  
-        - **Time Period:** 2022–2024  
-        - **Nature:** Synthetic e-commerce sales data  
-        """
-    )
+    st.markdown("""
+    **🎮 Python Console Games**  
+    Logic-building and OOP-focused Python games  
+    🔗 https://github.com/Venom-Shivu/python-console-games
 
-    with st.expander("🔍 Preview Dataset"):
-        st.dataframe(df.head(10), use_container_width=True)
-else:
-    st.warning("Dataset not found. Please ensure the CSV file exists in /data.")
+    **📈 VenomSQL – Executive Analytics Dashboard**  
+    Advanced SQL analytics, KPI design, Power BI dashboards  
+    🔗 https://github.com/Venom-Shivu/VenomSQL-Executive-Analytics-Dashboard
 
-# --------------------------------------------------
-# DASHBOARD BLUEPRINT (IMPORTANT: HONEST LABELING)
-# --------------------------------------------------
-st.subheader("📌 Dashboard Blueprint (Proposed)")
+    **🐍 Python Journey**  
+    Python fundamentals, DSA, and problem-solving  
+    🔗 https://github.com/Venom-Shivu/My-Python-Journey
 
-st.write(
-    """
-    The following dashboard is a **conceptual design mockup** that defines
-    the target KPIs, layout, and analytical structure of the final solution.
+    **🗄️ SQL Journey**  
+    SQL analytics, query optimization, and practice  
+    🔗 https://github.com/Venom-Shivu/MySQL-JOURNEY
 
-    > This is a **planning artifact**, not an output generated from the dataset.
-    """
-)
+    **📚 Python Practice Workbook**  
+    Interview prep, statistics, and data science exercises  
+    🔗 https://github.com/Venom-Shivu/Comprehensive-Python-Practice-Workbook-Venom
+    """)
 
-if DASHBOARD_IMAGE.exists():
-    st.image(
-        str(DASHBOARD_IMAGE),
-        caption="Proposed KPI & Dashboard Layout (Concept Design)",
-        use_column_width=True
-    )
-else:
-    st.info("Dashboard mockup image not found in /images.")
+# ==================================================
+# CONTACT SECTION
+# ==================================================
+elif st.session_state.section == "Contact":
 
-# --------------------------------------------------
-# PLANNED KPIs
-# --------------------------------------------------
-st.subheader("🔑 Planned Key Performance Indicators")
+    st.header("📬 Contact Me")
 
-st.markdown(
-    """
-    **Financial Metrics**
-    - Total Revenue
-    - Average Order Value (AOV)
-    - Revenue Growth (YoY)
-
-    **Customer Metrics**
-    - Customer Satisfaction Score
-    - Segment-wise Revenue Contribution
-
-    **Operational Metrics**
-    - Order Fulfillment Rate
-    - Cancellation & Return Rates
-    """
-)
-
-# --------------------------------------------------
-# PROJECT STATUS
-# --------------------------------------------------
-st.subheader("🚧 Project Status")
-
-st.write(
-    """
-    **Current Stage:**  
-    ✔ Problem definition  
-    ✔ Solution planning  
-    ✔ KPI & dashboard design  
-
-    **Next Steps:**  
-    ⏳ Data cleaning & transformation  
-    ⏳ KPI computation using Python  
-    ⏳ Interactive Streamlit dashboard implementation  
-    """
-)
-
-# --------------------------------------------------
-# SKILLS SECTION
-# --------------------------------------------------
-st.header("🧠 Technical Skills")
-
-st.markdown(
-    """
-    - **Programming:** Python (Pandas, NumPy, Matplotlib)  
-    - **Databases:** SQL (Joins, CTEs, Aggregations)  
-    - **BI Tools:** Power BI, Microsoft Excel  
-    - **Analytics:** KPI design, trend analysis, segmentation  
-    - **Visualization:** Executive dashboards & reporting  
-    """
-)
-
-# --------------------------------------------------
-# CONTACT / LINKS
-# --------------------------------------------------
-st.header("🔗 Connect")
-
-st.markdown(
-    """
+    st.markdown("""
+    - **LinkedIn:** https://www.linkedin.com/in/the-venom/  
     - **GitHub:** https://github.com/Venom-Shivu  
-    - **LinkedIn:** *(https://www.linkedin.com/in/the-venom/)*  
-    - **Email:** *(optional)*  
-    """
-)
+    - **Email:** mrshivusinghyadav@gmail.com  
+    """)
 
+    st.write("""
+    Open to data science, analytics, and machine learning opportunities,
+    internships, and collaborative projects.
+    """)
+
+# --------------------------------------------------
+# FOOTER
+# --------------------------------------------------
 st.divider()
-
-st.caption(
-    "© 2026 Shivansh Yadav | Portfolio Project — Built with Python & Streamlit"
-)
+st.caption("© 2026 Shivansh Yadav | Built with Python & Streamlit")
