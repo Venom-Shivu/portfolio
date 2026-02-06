@@ -232,8 +232,8 @@ st.write("""
 End-to-end analytics project analyzing e-commerce sales, customer behavior,
 regional performance, and operational KPIs.
 """)
-if os.path.exists("images/nexus_dashboard_mockup.png"):
-    st.image("images/nexus_dashboard_mockup.png", use_container_width=True)
+if os.path.exists("images/Nexus_Dashboard.png"):
+    st.image("images/Nexus_Dashboard.png", use_container_width=True)
 st.markdown("""
 <div class="icon-btn">
 <a href="https://github.com/Venom-Shivu/portfolio" target="_blank">View Repository</a>

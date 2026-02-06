@@ -42,7 +42,7 @@ portfolio/
 │   └── README.md              # Dataset description
 │
 ├── images/
-│   └── nexus_dashboard_mockup.png
+│   └── Nexus_Dashboard.png
 ```
 
 ---
@@ -59,15 +59,13 @@ portfolio demonstration.
 
 ---
 
-## 🖼️ Dashboard Blueprint (Proposed)
-The following image represents a **conceptual dashboard design** created to define:
-- KPI structure
-- Visual hierarchy
-- Business questions to be answered
+## 🖼️ Dashboard Preview
+The following image represents the **final dashboard** developed for this project, showcasing:
+- Key Performance Indicators (KPIs)
+- Sales & Category Performance
+- Regional & Customer Insights
 
-This is a **mockup**, not a final analytical output.
-
-![Dashboard Mockup](images/nexus_dashboard_mockup.png)
+![Nexus Analytics Dashboard](images/Nexus_Dashboard.png)
 
 ---
 
@@ -94,10 +92,10 @@ This is a **mockup**, not a final analytical output.
 ## 🚀 Current Project Status
 - ✅ Problem Definition Completed
 - ✅ Solution Planning Completed
-- ✅ Dashboard Blueprint Designed
-- ⏳ Data Cleaning & Processing
-- ⏳ KPI Computation
-- ⏳ Interactive Dashboard Development
+- ✅ Dashboard Design & Implementation
+- ✅ Data Cleaning & Processing
+- ✅ KPI Computation
+- ✅ Interactive Dashboard Development
 
 ---
 
